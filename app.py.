@@ -1,1 +1,42 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+# 1. Page Configuration
+st.set_page_config(
+    page_title="SASU Dashboard",
+    page_icon="📊",
+    layout="wide"
+)
+
+# 2. Sidebar for Navigation & Inputs
+st.sidebar.header("Navigation")
+page = st.sidebar.radio("Go to", ["Overview", "Financials", "Settings"])
+
+st.sidebar.divider()
+st.sidebar.info(f"Status: Unremunerated President")
+
+# 3. Main Content Logic
+if page == "Overview":
+    st.title("🚀 Business Overview")
+    
+    # Quick Metric Cards
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Revenue (YTD)", "€42,000", "+5%")
+    col2.metric("Expenses", "€12,000", "-2%")
+    col3.metric("Net Profit", "€30,000", "+8%")
+
+    st.subheader("Monthly Growth")
+    # Generating dummy data for a chart
+    chart_data = pd.DataFrame(
+        np.random.randn(12, 2),
+        columns=['Revenue', 'Expenses']
+    )
+    st.line_chart(chart_data)
+
+elif page == "Financials":
+    st.title("💰 Financial Records")
+    
+    # Data Entry Form
+    with st.expander("Add New Transaction
 
